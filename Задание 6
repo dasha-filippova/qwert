@@ -1,0 +1,35 @@
+class worker:
+    def __init__(self):
+        pass
+    def __str__(self):
+        return (self.name+'\n'+'expirience is '+str(self.experience)+'\n'+'Hourly Wage is '+str(self.hourlyWag)+
+                '\n'+'hours: '+str(self.hours)+'\n'+'Salary is '+str(self.salary)+'\n'+'premy is '+str(int(self.premy)))
+    def enter(self):
+        self.name = input('enter name: ')
+        self.experience = int(input('enter experiense: '))
+        self.hourlyWag = int(input('enter wag: '))
+        self.hours = int(input('enter hours: '))
+    def countSalary(self):
+        self.salary = self.hourlyWag * self.hours
+    def countPremy(self):
+        if self.experience < 1:
+            self.premy = 0
+        elif self.experience < 3:
+            self.premy = self.salary * 0.05
+        elif self.experience < 5:
+            self.premy = self.salary * 0.08
+        else:
+            self.premy = self.salary * 0.15
+    def write(self):
+        with open('workers.txt', 'w') as file:
+            file.write(self.name+'\n'+'expirience is '+str(self.experience)+'\n'+'Hourly Wage is '+str(self.hourlyWag)+
+                '\n'+'hours: '+str(self.hours)+'\n'+'Salary is '+str(self.salary)+'\n'+'premy is '+str(int(self.premy)))
+        print('Information about '+self.name+'was written in file "workers.txt"')
+
+
+Denis = worker()
+Denis.enter()
+Denis.countSalary()
+Denis.countPremy()
+print(Denis)
+Denis.write()
